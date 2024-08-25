@@ -1,0 +1,10 @@
+apiVersion: v2
+name: oiai-api
+description: A Helm chart for Kubernetes
+type: application
+version: 1.0.0
+dependencies:
+  - name: library-charts
+    alias: common
+    version: "1.4.2"
+    repository: oci://registry-1.docker.io/fabian818

@@ -1,0 +1,7 @@
+image:
+
+imagePullSecrets:
+- name: dpr-secret
+
+api:
+  enabled: true

@@ -1,0 +1,26 @@
+{{/* put this file in /templates/common.yaml */}}
+
+{{/* Make sure all variables are set properly */}}
+{{- $apiContext := deepCopy . -}}
+{{- $_ := mergeOverwrite $apiContext.Values .Values.api -}}
+{{- include "common.values.setup" $apiContext }}
+
+{{/* Append the hardcoded settings */}}
+{{- define "oiai-api.hardcodedValues" -}}
+
+nameOverride: api
+
+controller:
+  type: deployment
+  strategy: RollingUpdate
+
+serviceAccount:
+  create: true
+
+{{- end -}}
+{{- $_ := mergeOverwrite $apiContext.Values (include "oiai-api.hardcodedValues" $apiContext | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{- if .Values.api.enabled -}}
+{{ include "common.all" $apiContext }}
+{{- end -}}
