@@ -71,6 +71,7 @@ jobs:
 
       - name: Package Helm chart
         run: |
+          echo ${{ needs.calculate-version.outputs.new_version }}
           helm package ./charts/api --version ${{ needs.calculate-version.outputs.new_version }}
 
       - name: Push Helm chart to Docker Hub
