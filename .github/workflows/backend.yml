@@ -71,6 +71,10 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
+      - name: Download Chart dependencies
+        run: |
+          helm dependency update ./charts/api
+
       - name: Package Helm chart
         run: |
           echo ${{ needs.calculate-version.outputs.new_version }}
