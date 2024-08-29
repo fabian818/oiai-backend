@@ -53,13 +53,15 @@ jobs:
           aws-region: us-east-1
       - name: Build Image
         run: |
-          docker build -f docker/app/Dockerfile  -t 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:${{ needs.calculate-version.outputs.new_version }} .
+          docker build -f docker/app/Dockerfile  -t 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:development .
 
       - name: Push Docker image to Docker Hub
         run: |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 132900311735.dkr.ecr.us-east-1.amazonaws.com
-          docker push 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-api:${{ needs.calculate-version.outputs.new_version }}
-          docker push 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-api:development
+          docker tag 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:development 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:${{ needs.calculate-version.outputs.new_version }}
+          docker push 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:${{ needs.calculate-version.outputs.new_version }}
+          docker push 132900311735.dkr.ecr.us-east-1.amazonaws.com/oiai-dev-us-east-1-api-repo:development
+
 
   helm-package-and-push:
     runs-on: ubuntu-latest
