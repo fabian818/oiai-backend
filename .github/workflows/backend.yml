@@ -87,4 +87,5 @@ jobs:
         run: |
           export HELM_REPO_URL="oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/oiai-api-dev-base-chart"
           helm registry login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN registry-1.docker.io
+          ls
           helm push my-chart-${{ needs.calculate-version.outputs.new_version }}.tgz $HELM_REPO_URL
