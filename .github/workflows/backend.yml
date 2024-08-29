@@ -52,7 +52,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -f docker/app/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/oiai-api:${{ needs.calculate-version.outputs.new_version }} .
-
+          echo ${{ needs.calculate-version.outputs.new_version }}
       - name: Push Docker image to Docker Hub
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/oiai-api:${{ needs.calculate-version.outputs.new_version }}
