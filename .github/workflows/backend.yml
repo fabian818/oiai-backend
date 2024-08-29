@@ -88,6 +88,6 @@ jobs:
           HELM_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           HELM_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          export HELM_REPO_URL="oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/oiai-api-dev-base-chart"
+          export HELM_REPO_URL="oci://registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}"
           echo $HELM_PASSWORD | helm registry login -u $HELM_USERNAME --password-stdin registry-1.docker.io
-          helm push oiai-api-${{ needs.calculate-version.outputs.new_version }}.tgz $HELM_REPO_URL
+          helm push oiai-api-chart-${{ needs.calculate-version.outputs.new_version }}.tgz $HELM_REPO_URL

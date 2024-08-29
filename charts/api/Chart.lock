@@ -1,0 +1,6 @@
+dependencies:
+- name: library-charts
+  repository: oci://registry-1.docker.io/fabian818
+  version: 1.4.2
+digest: sha256:03fa28fce3fadad0b43c2229b8bb0c650ed327343712f95c3760f4c202a4db43
+generated: "2024-08-29T00:27:10.773752-05:00"
