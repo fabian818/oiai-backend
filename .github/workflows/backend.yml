@@ -23,7 +23,7 @@ jobs:
         id: get_latest_tag
         run: |
           git fetch --tags
-          echo "latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) || echo "v0.0.0")" >> $GITHUB_OUTPUT
+          echo "latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1) || echo "v0.0.2")" >> $GITHUB_OUTPUT
 
       - name: Calculate new version
         id: set_new_version
@@ -72,6 +72,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::132900311735:role/oiai-dev-github-role
+          aws-region: us-east-1
 
       - name: Install Helm
         run: |
