@@ -1,6 +1,6 @@
 # oiai-backend
 
-**oiai-backend** is a backend service built with FastAPI, designed for performance, scalability, and maintainability. It uses containerization with Docker and deployment orchestration via Helm for Kubernetes environments.
+**oiai-backend** is a backend simple ping server service built with FastAPI, designed for performance, scalability, and maintainability. It uses containerization with Docker and deployment orchestration via Helm for Kubernetes environments.
 
 ## Features
 
