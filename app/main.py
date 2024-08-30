@@ -19,7 +19,7 @@ app.add_middleware(
 
 @app.get("/")
 def health_check():
-    return {"status": "okk"}
+    return {"status": "okkk"}
 
 @app.get('/text')
 def read_text(db: Session = Depends(database.get_db)):
