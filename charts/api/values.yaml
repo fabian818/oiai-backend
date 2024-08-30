@@ -1,7 +1,7 @@
 image:
 
-imagePullSecrets:
-- name: dpr-secret
-
 api:
-  enabled: true
+  version: 1.0.0
+  databaseSecret: oiai-db-credentials-secret
+  alb:
+    certificateArn:
